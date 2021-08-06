@@ -1,7 +1,20 @@
 <p>studentmanagement works!</p>
-<ul>
-    <li *ngFor="let stu of students">
-        {{stu.name}}
-    </li>
-</ul>
+<table width=100%>
+    <tr>
+        <td>Sno</td>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Email</td>
+        <td colspan="2">Action</td>
+    </tr>
+    <tr *ngFor="let stu of students; let i=index">
+        <td>{{i+1}}</td>
+        <td>{{stu.id}}</td>
+        <td>{{stu.name}}</td>
+        <td>{{stu.email}}</td>
+        <td>Edit</td>
+        <td>Delete</td>
+    </tr>
+
+</table>
 
