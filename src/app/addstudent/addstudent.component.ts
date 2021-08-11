@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-addstudent',
@@ -8,7 +10,8 @@ import { NgForm } from '@angular/forms';
 })
 export class AddstudentComponent implements OnInit {
 
-  constructor() { }
+  stuObj:any={};
+  constructor(private http:HttpClient, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -17,6 +20,13 @@ export class AddstudentComponent implements OnInit {
     if(addStuFrm.invalid){
       return;
     }
+    this.stuObj={
+    "name": addStuFrm.value.stuName,
+    "email": addStuFrm.value.stuEmail
+    };
+    this.http.post('http://localhost:4444/students',this.stuObj).subscribe(()=>{
+      this.router.navigate(['/']);
+    });
   }
 
 }
