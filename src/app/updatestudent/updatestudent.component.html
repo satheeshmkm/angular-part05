@@ -1,17 +1,29 @@
 <p>updatestudent works!</p>
-<div class="container border">
+<div clas="container border" *ngIf="!existed">
+    <div class="row">
+        <div class="col-10 mx-auto alert alert-danger">
+            <h2>Student Not found</h2>
+        </div>
+    </div>
+</div>
+
+<div class="container border" *ngIf="existed">
     <div class="row">
         <div class="col-10 mx-auto">
             <form #updateStuFrm="ngForm" (ngSubmit)="updateStudent(updateStuFrm)">
                 <div class="form-group">
                     <label for="stuName">Name</label>
-                    <input type="text" id="stuName" class="form-control" name="stuName" ngModel #stuName="ngModel" required>
-                    <div class="alert alert-danger" *ngIf="updateStuFrm.submitted && stuName.invalid">Please enter your name</div>
+                    <input type="text" id="stuName" class="form-control" name="stuName" ngModel #stuName="ngModel"
+                        [(ngModel)]="displayStudentInfo.name" required>
+                    <div class="alert alert-danger" *ngIf="updateStuFrm.submitted && stuName.invalid">Please enter your
+                        name</div>
                 </div>
                 <div class="form-group">
                     <label for="stuEmail">Email</label>
-                    <input type="text" id="stuEmail" class="form-control" name="stuEmail" ngModel #stuEmail="ngModel" required>
-                    <div class="alert alert-danger" *ngIf="updateStuFrm.submitted && stuEmail.invalid">Please enter your Email</div>
+                    <input type="text" id="stuEmail" class="form-control" name="stuEmail" ngModel #stuEmail="ngModel"
+                        [(ngModel)]="displayStudentInfo.email" required>
+                    <div class="alert alert-danger" *ngIf="updateStuFrm.submitted && stuEmail.invalid">Please enter your
+                        Email</div>
                 </div>
                 <button class="btn btn-success">Update student</button>
             </form>
