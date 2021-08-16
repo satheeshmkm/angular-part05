@@ -14,7 +14,7 @@
         <td>{{stu.name}}</td>
         <td>{{stu.email}}</td>
         <td><a class="btn btn-info" [routerLink]="['/update-student',stu.id]">Edit</a></td>
-        <td><a class="btn btn-danger">Delete</a></td>
+        <td><a class="btn btn-danger" (click)="deleteStudent(stu.id)">Delete</a></td>
     </tr>
 
 </table>
